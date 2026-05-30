@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import Header from './components/Header';
 import Home from './components/Home';
 import Donors from './components/Donor';
 import News from './components/News';
 import Registr from './pages/Registr';
 
-
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
   const [donors, setDonors] = useState<any[]>([]);
 
-  // MongoDB bazasidagi haqiqiy donorlarni yuklab olish (Statistika to'g'ri ishlashi uchun)
   const fetchDonors = () => {
     fetch('http://localhost:5000/api/donors')
       .then((res) => {
@@ -30,11 +27,6 @@ export default function App() {
     fetchDonors();
   }, []);
 
-  // Ro'yxatdan o'tgandan keyin bazani qayta yangilash funksiyasi
-  const handleAddNewDonor = () => {
-    fetchDonors(); // MongoDB ga yangi donor qo'shilgach, ro'yxatni qayta tortadi
-  };
-
   const renderPage = () => {
     switch (currentPage) {
       case 'home':
@@ -44,7 +36,7 @@ export default function App() {
       case 'news':
         return <News />;
       case 'registr':
-        return <Registr addNewDonor={handleAddNewDonor} setCurrentPage={setCurrentPage} />;
+        return <Registr addNewDonor={fetchDonors} setCurrentPage={setCurrentPage} />;
       default:
         return <Home setCurrentPage={setCurrentPage} donors={donors} />;
     }
