@@ -1,0 +1,511 @@
+/* --- ASOSIY KONTEYNER --- */
+.donor-page-container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 40px 5%;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  
+  /* Harakatlanuvchi fon sozlamalari */
+  background-image: url('fon.jpg'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  /* FIXED qildik, shunda fon qimirlamaydi, kontent esa uning ustida silliq skroll bo'ladi */
+  background-attachment: fixed; 
+  position: relative;
+  color: #ffffff;
+  
+  /* Animatsiya */
+  animation: suzuvchiFon 25s linear infinite alternate;
+}
+
+/* Fon ustidagi qora/to'q qizil silliq parda overlay */
+.donor-page-container::before {
+  content: "";
+  position: fixed; /* FIXED qilingani skroll muammosini uzil-kesil hal qiladi! */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* To'q qizil va qora gradient aralashmasi premium effekt beradi */
+  background: linear-gradient(rgba(26, 5, 8, 0.82), rgba(15, 2, 4, 0.92)); 
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Fon harakatlanishi animatsiyasi */
+@keyframes suzuvchiFon {
+  from { background-position: 0% center; }
+  to { background-position: 100% center; }
+}
+
+/* --- TEPANGI CONTROL PANEL (BOSHQRUV QUTISI) --- */
+.donor-header {
+  position: relative;
+  z-index: 2; /* Pardadan tepada turishi uchun */
+  
+  /* Premium Glassmorphism */
+  background-color: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  
+  border-radius: 24px;
+  padding: 35px;
+  margin-bottom: 45px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* Sarlavha qismi */
+.donor-header-title-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+}
+
+.donor-header h1 {
+  margin: 0 0 8px 0;
+  color: #ffffff;
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.donor-header h1 span {
+  color: #ef4444;
+  text-shadow: 0 0 15px rgba(239, 68, 68, 0.4);
+}
+
+.donor-header p {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 15px;
+}
+
+/* Zamonaviy Neon Qidiruv Inputi */
+.search-input {
+  padding: 16px 22px;
+  width: 100%;
+  max-width: 100%;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background-color: rgba(0, 0, 0, 0.4) !important;
+  color: #ffffff !important;
+  font-size: 16px;
+  outline: none;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+.search-input::placeholder {
+  color: #64748b;
+}
+
+.search-input:focus {
+  border-color: #ef4444;
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.25);
+}
+
+/* --- STATISTIKA VIDJETLARI --- */
+.stats-container {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.stat-box {
+  padding: 12px 20px;
+  border-radius: 16px;
+  text-align: center;
+  min-width: 120px;
+}
+
+.stat-box.results {
+  background-color: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.stat-box.total {
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* --- GRID VA KARTALAR (DONOR CARDS) --- */
+.donor-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 30px;
+  width: 100%;
+  padding-bottom: 60px;
+}
+
+/* Har bir donor kartasi (Glassmorphism + Neon Hover) */
+.donor-card {
+  background-color: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  
+  padding: 25px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.donor-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(239, 68, 68, 0.3);
+  box-shadow: 0 12px 40px rgba(239, 68, 68, 0.15);
+}
+
+/* Qon guruhi nishoni (Blood Badge) */
+.blood-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: rgba(239, 68, 68, 0.2);
+  color: #ff8787;
+  padding: 6px 14px;
+  border-radius: 30px;
+  font-weight: 800;
+  font-size: 14px;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  text-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+}
+
+/* Donor ma'lumotlari matni */
+.donor-info h2 {
+  margin: 0 0 15px 0;
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 700;
+  padding-right: 65px;
+}
+
+.donor-info p {
+  margin: 8px 0;
+  color: #cbd5e1;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Kartadagi Harakat tugmalari */
+.card-actions {
+  display: flex;
+  gap: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 18px;
+  margin-top: 22px;
+}
+
+.card-actions button, .card-actions a {
+  flex: 1;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.call-btn {
+  background-color: #ef4444;
+  color: white;
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+}
+
+.call-btn:hover {
+  background-color: #dc2626;
+  transform: scale(1.03);
+}
+
+.edit-btn {
+  background-color: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.edit-btn:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.delete-btn {
+  background-color: rgba(239, 68, 68, 0.06);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.2) !important;
+}
+
+.delete-btn:hover {
+  background-color: #ef4444;
+  color: white;
+}
+
+/* --- MODAL (POP-UP) STILLARI --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  backdrop-filter: blur(8px);
+}
+
+.edit-form {
+  background-color: #150305;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 35px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 420px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.edit-form h3 {
+  margin: 0 0 25px 0;
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 700;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 12px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+  box-sizing: border-box;
+  font-size: 15px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.form-group input:focus {
+  border-color: #ef4444;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.2);
+}
+
+.form-buttons button {
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.cancel-btn {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #cbd5e1;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.cancel-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Bo'sh holat xabari */
+.no-data {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  background-color: rgba(255, 255, 255, 0.02);
+  border-radius: 24px;
+  color: #94a3b8;
+  border: 2px dashed rgba(255, 255, 255, 0.08);
+}
+/* --- DONOR SAHIFA STIllARI --- */
+.donor-page-container {
+  width: 100%;
+  padding: 30px 5%;
+  box-sizing: border-box;
+}
+.donor-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Qidiruv qutisi */
+.donor-search-hero {
+  background: rgba(239, 68, 68, 0.02);
+  border: 1px solid rgba(239, 68, 68, 0.1);
+  border-radius: 20px;
+  padding: 35px;
+  margin-bottom: 40px;
+}
+.search-title-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 8px;
+}
+.search-icon-big { font-size: 2rem; }
+.donor-search-hero h1 { font-size: 2.2rem; margin: 0; color: #fff; font-weight: 800; }
+.donor-search-hero h1 span { color: #ef4444; }
+.donor-search-hero p { color: #9ca3af; margin: 0 0 25px 0; font-size: 1rem; }
+
+.search-input-wrapper {
+  display: flex;
+  align-items: center;
+  background: #0d0204;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 5px 20px;
+  gap: 15px;
+}
+.premium-search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.05rem;
+  padding: 12px 0;
+  outline: none;
+}
+.results-counter {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* CARDS GRID */
+.donor-grid-luxury {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+.donor-card-lux {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 18px;
+  padding: 24px;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+.donor-card-lux:hover {
+  transform: translateY(-5px);
+  border-color: rgba(239, 68, 68, 0.3);
+  box-shadow: 0 10px 25px rgba(239, 68, 68, 0.08);
+}
+.donor-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.donor-avatar {
+  font-size: 1.8rem;
+}
+.donor-blood-badge {
+  background: #ef4444;
+  color: white;
+  padding: 5px 14px;
+  border-radius: 8px;
+  font-weight: 800;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+.donor-name-text {
+  font-size: 1.25rem;
+  color: white;
+  margin: 0 0 15px 0;
+  font-weight: 700;
+}
+.donor-info-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.donor-info-rows p {
+  margin: 0;
+  color: #9ca3af;
+  font-size: 0.92rem;
+}
+.donor-info-rows span {
+  color: #cbd5e1;
+  font-weight: 500;
+  margin-left: 5px;
+}
+.donor-info-rows .phone-highlighter {
+  color: #f87171;
+  font-weight: 600;
+}
+.donor-card-footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+.status-badge {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.status-active { color: #10b981; }
+.status-busy { color: #f59e0b; }
+
+.call-donor-btn {
+  background: rgba(255, 255, 255, 0.04);
+  color: white;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.2s;
+}
+.call-donor-btn:hover {
+  background: white;
+  color: #1a0508;
+}
+.no-donors-found {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 40px;
+  color: #9ca3af;
+}

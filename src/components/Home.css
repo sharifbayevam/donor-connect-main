@@ -1,0 +1,182 @@
+/* --- ANIMATSIYALAR --- */
+@keyframes fadeInUpHome {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes heartGlow {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 8px rgba(239,68,68,0.5)); }
+  50% { transform: scale(1.15); filter: drop-shadow(0 0 20px rgba(239,68,68,0.8)); }
+}
+
+/* --- ASOSIY KONTEYNER --- */
+.home-page-container {
+  width: 100%;
+  padding: 40px 6%;
+  box-sizing: border-box;
+}
+.home-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* --- HERO SECTION --- */
+.hero-section-premium {
+  text-align: center;
+  padding: 50px 20px;
+  background: radial-gradient(circle at center, rgba(239, 68, 68, 0.05) 0%, transparent 70%);
+  border-radius: 24px;
+  margin-bottom: 50px;
+}
+.heart-pulse-glow {
+  font-size: 3.5rem;
+  margin-bottom: 15px;
+  display: inline-block;
+  animation: heartGlow 2s infinite ease-in-out;
+}
+.hero-title-neon {
+  font-size: 3rem;
+  color: #ffffff;
+  margin: 0 0 20px 0;
+  font-weight: 800;
+  line-height: 1.25;
+}
+.hero-title-neon span {
+  color: #ef4444;
+  text-shadow: 0 0 15px rgba(239, 68, 68, 0.3);
+}
+.hero-subtitle {
+  color: #cbd5e1;
+  font-size: 1.15rem;
+  max-width: 700px;
+  margin: 0 auto 35px auto;
+  line-height: 1.65;
+}
+
+/* TUGMALAR */
+.hero-action-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.btn-neon-primary {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 14px 32px;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(239, 68, 68, 0.4);
+}
+.btn-neon-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(239, 68, 68, 0.6);
+}
+.btn-neon-secondary {
+  background: rgba(255, 255, 255, 0.03);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 14px 32px;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn-neon-secondary:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(235, 255, 255, 0.3);
+  transform: translateY(-3px);
+}
+
+/* --- STATISTIKA --- */
+.stats-grid-luxury {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-bottom: 60px;
+}
+.stat-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 30px 20px;
+  border-radius: 20px;
+  text-align: center;
+  transition: all 0.3s;
+}
+.stat-card:hover {
+  border-color: rgba(239, 68, 68, 0.25);
+  background: rgba(255, 255, 255, 0.04);
+  transform: translateY(-4px);
+}
+.stat-icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+.stat-card h2 {
+  font-size: 2.2rem;
+  color: #ffffff;
+  margin: 0 0 5px 0;
+  font-weight: 800;
+}
+.stat-card p {
+  color: #9ca3af;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* --- MA'LUMOT SECTION --- */
+.info-section-lux {
+  background: rgba(239, 68, 68, 0.02);
+  border: 1px solid rgba(239, 68, 68, 0.1);
+  padding: 35px;
+  border-radius: 20px;
+}
+.info-section-lux h3 {
+  color: #ffffff;
+  font-size: 1.5rem;
+  margin: 0 0 20px 0;
+}
+.info-bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+.bullet-item {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+}
+.bullet-check {
+  color: #ef4444;
+  font-weight: bold;
+}
+.bullet-item p {
+  color: #cbd5e1;
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.btn-read-more {
+  background: transparent;
+  color: #ef4444;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0;
+  transition: color 0.2s;
+}
+.btn-read-more:hover {
+  color: #f87171;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .hero-title-neon { font-size: 2.2rem; }
+  .hero-subtitle { font-size: 1rem; }
+}

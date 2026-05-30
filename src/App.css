@@ -1,0 +1,44 @@
+/* Brauzerning standart chekka bo'shliqlarini nolga tushiramiz */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background-color: #000000; /* Rasm yuklanguncha orqa fon qora bo'lib turadi */
+  backdrop-filter: blur(5px); /* Rasm yuklanayotganda orqa fonni biroz xiralashtiradi */
+}
+
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+/* Butun ilovaning foni va uning qimirlash harakati */
+.app-main-container {
+  min-height: 100vh;
+  color: #ffffff;
+  position: relative;
+  overflow-x: hidden;
+  background-color: #1a0508;
+  /* Agar sizda loyihada fon rasmi bo'lsa, quyidagi qatorni faollashtiring: */
+  background-image: url('./components/fon.jpg'); 
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Sahifalar almashganda silliq paydo bo'lish effekti */
+.anim-fade-in {
+  animation: fadeInSlight 0.5s ease-out forwards;
+}
+
+@keyframes fadeInSlight {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
